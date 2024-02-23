@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+$border-radius: 0px !default;
+$font-family-body: 'Poppins', sans-serif;
+$primary-color: #923031;
+
+@import 'active_admin/mixins';
+@import 'arctic_admin/base';
+
+// inline-hint fix
+#admin-settings form .inline-hints {
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #979797;
+}
+
+.inline-hints {
+  color: #979797 !important;
+  font-size: 0.8rem !important;
+}
+
+.boolean .inline-hints {
+  margin: 0.4rem 0 0 0 !important;
+  width: 110%;
+  height: 110%;
+}
+
+// Active Admin Mobile Responsive
+.active_admin {
+  #wrapper #header.header {
+    z-index: 1000;
+  }
+}
+
+@media (max-width: 900px) {
+  body.active_admin #active_admin_content.with_sidebar {
+    display: flex;
+    flex-direction: column;
+
+    #main_content_wrapper {
+      width: 100%;
+    }
+
+    #sidebar {
+      order: -1;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      position: unset;
+
+      .sidebar_section.panel {
+        flex: 1;
+      }
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+    label {
+      font-size: 0.8rem;
+    }
+  }
+}
