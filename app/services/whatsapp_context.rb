@@ -13,6 +13,7 @@ class WhatsappContext
     @msg_type = webhook_data[:msg_type]
     @msg_body = webhook_data[:msg_body]
     @interactive_reply = webhook_data[:interactive_reply]
+    @image_id = webhook_data[:image_id]
 
     @user = User.find_or_initialize_by(phone_number: @phone)
     @conversation = Conversation.find_or_initialize_by(user: @user)
@@ -80,6 +81,14 @@ class WhatsappContext
       step_received_name(@msg_body)
     else
       @whatsapp.text("You have entered: #{@msg_body}")
+    end
+  end
+
+  def handle_image_reply
+    if @image_id
+      @whatsapp.text('Thank you for the image.')
+    else
+      @whatsapp.text('Sorry, I did not receive the image. Please try again.')
     end
   end
 
